@@ -12,4 +12,12 @@ RUN apk --no-cache add php7 php7-fpm php7-mysqli php7-json php7-openssl php7-cur
 # Install node and npm
 RUN apk add --update nodejs nodejs-npm && npm i -g yarn
 
+# Install chromium
+RUN echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories \
+    && echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories \
+    && apk add --no-cache \
+    chromium@edge \
+    harfbuzz@edge \
+    nss@edge
+
 RUN mkdir /run/nginx
