@@ -18,9 +18,8 @@ RUN apk add --update nodejs nodejs-npm && npm i -g yarn
 ENV CHROME_BIN="/usr/bin/chromium-browser" \
     PUPPETEER_SKIP_CHROMIUM_DOWNLOAD="true"
 
-RUN apk update \
-    && apk upgrade \
-    && apk add --no-cache \
-    udev ttf-freefont chromium \
-    mkdir /app && cd /app && npm install puppeteer@1.10.0
+RUN apk update && apk upgrade \
+    && apk add --no-cache udev ttf-freefont chromium 
+
+RUN mkdir /app && cd /app && yarn add puppeteer@1.10.0
 
